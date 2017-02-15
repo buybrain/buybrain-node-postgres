@@ -1,0 +1,25 @@
+{
+    "name": "buybrain-pg",
+    "version": "0.0.1",
+    "main": "./lib/db.js",
+    "description": "Convenient wrapper around node-postgres",
+    "author": "Ede Meijer <ede@buybrain.io>",
+    "homepage": "https://github.com/buybrain/buybrain-node-postgres",
+    "keywords": [
+        "pg",
+        "postgres"
+    ],
+    "directories": {
+        "lib": "./lib"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "bluebird": "^3.4.7",
+        "pg": "^6.1.2",
+        "pg-format": "^1.0.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/buybrain/buybrain-node-postgres.git"
+    }
+}
