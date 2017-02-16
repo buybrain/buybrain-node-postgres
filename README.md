@@ -2,13 +2,14 @@ Buybrain postgres
 ===
 
 This is a ergonomic wrapper around the [pg](https://github.com/brianc/node-postgres) module for interacting with 
-Postgres databases.
+Postgres databases and testing code that interacts with databases.
 
 - Promise based interface (with [bluebird](http://bluebirdjs.com/docs/getting-started.html))
 - More flexible argument handling with [pg-format](https://github.com/datalanche/node-pg-format) rather than using 
   prepared statements.
 - Automatically releases client resources to prevent leakage
 - Convenient transactions
+- Includes scriptable mock version of database client
 
 Getting started
 ---
@@ -77,6 +78,12 @@ Then, from the project root, run
 ``` 
 nodeunit
 ```
+
+Using the mock version for testing
+---
+
+The mock client is tested itself in [this unit test](test/mockPoolTest.js), which is a great
+example of how it can be used for your own tests.
 
 License
 ---
