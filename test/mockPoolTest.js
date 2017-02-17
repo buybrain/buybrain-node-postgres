@@ -38,7 +38,7 @@ exports.testTransactions = function (test) {
     db.using(SUT.connect(), SUT.connect(), (client1, client2) => {
         return prepareTestTable(client1)
             .then(client1.begin)
-            .then(() => client1.query('INSERT INTO test SELECT 1'))
+            .then(() => client1.query('INSERT INTO test   SELECT 1'))
             .then(() => client2.query('SELECT * FROM test'))
             .then(data => {
                 test.deepEqual([], data);
@@ -62,7 +62,9 @@ exports.testTransactional = function (test) {
 
         .expect.query(/DROP TABLE/).willSucceed()
         .expect.query(/CREATE TABLE/).willSucceed()
-        .expect.query('BEGIN').willSucceed()
+        .expect.query(`
+            BEGIN
+        `).willSucceed()
         .expect.query('INSERT INTO test SELECT 1').willSucceed()
         .expect.query('INSERT INTO test SELECT 2').willSucceed()
         .expect.query('COMMIT').willSucceed()
