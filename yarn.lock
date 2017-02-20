@@ -101,6 +101,13 @@ split@^1.0.0:
   dependencies:
     through "2"
 
+storymock@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/storymock/-/storymock-0.0.1.tgz#9b47a79ce223b5879458914b1f77ac7bcbf7b7fe"
+  dependencies:
+    bluebird "^3.4.7"
+    lodash "^4.17.4"
+
 through@2:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
