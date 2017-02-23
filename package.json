@@ -1,6 +1,6 @@
 {
     "name": "buybrain-pg",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "main": "./lib/db.js",
     "description": "Convenient wrapper around node-postgres",
     "author": "Ede Meijer <ede@buybrain.io>",
@@ -17,7 +17,7 @@
         "bluebird": "^3.4.7",
         "lodash": "^4.17.4",
         "pg": "^6.1.2",
-        "pg-format": "^1.0.3",
+        "pg-format": "^1.0.4",
         "storymock": "^0.0.1"
     },
     "repository": {

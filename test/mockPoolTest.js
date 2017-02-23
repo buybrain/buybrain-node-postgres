@@ -66,8 +66,8 @@ exports.testTransactional = function (test) {
         .expect('query', `
             BEGIN
         `)
-        .expect('query', 'INSERT INTO test SELECT 1')
-        .expect('query', 'INSERT INTO test SELECT 2')
+        .expect('query', `INSERT INTO test SELECT '1'`)
+        .expect('query', `INSERT INTO test SELECT '2', '2', '3'`)
         .expect('query', 'COMMIT')
         .expect('query', 'SELECT * FROM test').ok([{a: 1}, {a: 2}])
 
@@ -89,8 +89,8 @@ exports.testTransactional = function (test) {
     db.using(SUT.connect(), client => {
         return prepareTestTable(client)
             .then(() => client.transactional(() => {
-                return client.query('INSERT INTO test SELECT 1')
-                    .then(() => client.query("INSERT INTO test SELECT 2"));
+                return client.query('INSERT INTO test SELECT %L', 1)
+                    .then(() => client.query("INSERT INTO test SELECT %1$L, %1$L, %2$L", 2, 3));
             }))
             .then(() => client.query("SELECT * FROM test"))
             .then(data => test.deepEqual([{a: 1}, {a: 2}], data))
