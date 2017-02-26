@@ -108,6 +108,22 @@ exports.testTransactional = function (test) {
     });
 };
 
+exports.testPoolWith = function (test) {
+    test.expect(1);
+
+    const SUT = db.newMockPool()
+        .expect('connect')
+        .expect('query', 'SELECT 1 AS a').ok([{a: 1}])
+        .expect('close');
+
+    SUT.with(conn => conn.query('SELECT 1 AS a'))
+        .then(res => {
+            test.deepEqual(res, [{a: 1}]);
+            SUT.assertStoryDone();
+            test.done();
+        });
+};
+
 exports.testPoolQuery = function (test) {
     test.expect(1);
 
