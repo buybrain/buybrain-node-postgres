@@ -73,6 +73,16 @@ exports.testTransactional = function (test) {
     });
 };
 
+exports.testPoolQuery = function (test) {
+    test.expect(1);
+
+    SUT.query('SELECT 1 AS a')
+        .then(res => {
+            test.deepEqual(res, [{a: 1}]);
+            test.done();
+        });
+};
+
 function prepareTestTable(client) {
     return client.query('DROP TABLE IF EXISTS test')
         .then(() => client.query('CREATE TABLE test (a integer)'));
