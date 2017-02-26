@@ -124,6 +124,21 @@ exports.testPoolWith = function (test) {
         });
 };
 
+exports.testPoolTransactional = function (test) {
+    const SUT = db.newMockPool()
+        .expect('connect')
+        .expect('query', 'BEGIN')
+        .expect('query', 'SELECT 1 AS a').ok([{a: 1}])
+        .expect('query', 'COMMIT')
+        .expect('close');
+
+    SUT.transactional(conn => conn.query('SELECT 1 AS a'))
+        .then(() => {
+            SUT.assertStoryDone();
+            test.done();
+        });
+};
+
 exports.testPoolQuery = function (test) {
     test.expect(1);
 
