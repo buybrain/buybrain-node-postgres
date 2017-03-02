@@ -133,7 +133,8 @@ exports.testPoolTransactional = function (test) {
         .expect('close');
 
     SUT.transactional(conn => conn.query('SELECT 1 AS a'))
-        .then(() => {
+        .then(result => {
+            test.deepEqual(result, [{a: 1}]);
             SUT.assertStoryDone();
             test.done();
         });
