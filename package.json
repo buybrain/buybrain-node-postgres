@@ -1,6 +1,6 @@
 {
     "name": "buybrain-pg",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "main": "./lib/db.js",
     "description": "Convenient wrapper around node-postgres",
     "author": "Ede Meijer <ede@buybrain.io>",
